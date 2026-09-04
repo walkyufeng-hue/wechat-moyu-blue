@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wechat-moyu-blue · 摸鱼蓝排版预览</title>
+<style>
+  body{margin:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;color:#1f2937}
+  header{padding:32px 24px 8px;max-width:1480px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 8px}
+  .sub{color:#6b7280;font-size:14px;line-height:1.7;margin:0 0 4px}
+  .grid{display:flex;flex-wrap:wrap;gap:24px;padding:16px 24px 32px;max-width:1480px;margin:0 auto}
+  .card{background:#fff;border-radius:14px;box-shadow:0 4px 16px -6px rgba(0,0,0,.12);overflow:hidden;width:380px;display:flex;flex-direction:column}
+  .bar{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid #f0f0f0}
+  .dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.06)}
+  .tname{font-weight:700;font-size:15px}
+  .tmeta{margin-left:auto;font-size:11px;color:#9ca3af;font-family:monospace}
+  .tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;background:#F3F7FF;color:#0076EA;margin-left:6px}
+  iframe{width:100%;height:680px;border:0;background:#fff}
+</style>
+</head>
+<body>
+<header>
+  <h1>wechat-moyu-blue · 摸鱼蓝排版预览</h1>
+  <p class="sub">固定使用摸鱼蓝主题。画框约等于公众号手机宽度，可在框内滚动查看全文。</p>
+  <p class="sub">预览内容已通过公众号 HTML 合规校验。</p>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+  const THEMES=[
+    ["摸鱼蓝","#0076EA","moyu-blue.html","default"],
+  ];
+  const grid=document.getElementById('grid');
+  THEMES.forEach(function(t){
+    var name=t[0],color=t[1],file=t[2],tag=t[3];
+    var slug=file.replace('.html','');
+    var card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=
+      '<div class="bar">'+
+        '<span class="dot" style="background:'+color+'"></span>'+
+        '<span class="tname">'+name+(tag?'<span class="tag">'+tag+'</span>':'')+'</span>'+
+        '<span class="tmeta">'+slug+'</span>'+
+      '</div>'+
+      '<iframe src="'+file+'" loading="lazy" title="'+name+'"></iframe>';
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
