@@ -1,6 +1,6 @@
-# 摸鱼蓝增量组件库 —— 代码块 · 图片/GIF · 小标签标题
+# 摸鱼蓝通用组件库 —— 代码块 · 图片/GIF
 
-> 本文件补充摸鱼蓝主题的代码块、图片/GIF 和小标签标题组件；主题主体组件读取 `theme-moyu-blue.md`。
+> 本文件维护代码块与图片/GIF 组件；标题、引用、提示和列表统一从主题库读取 `theme-moyu-blue.md`。
 >
 > **固定配色**：主色 `#0076EA`、浅底 `#F3F7FF`、浅标 `#A5C5FC`、点睛色 `#287CFB`。
 >
@@ -17,9 +17,9 @@
 ```html
 <section style="margin:0 0 20px;border-radius:8px;overflow:hidden;background:#1E293B;box-shadow:0 4px 16px -8px rgba(15,23,42,0.4);">
   <section style="display:flex;align-items:center;padding:9px 14px;background:#0F172A;">
-    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF5F56;margin-right:7px;font-size:0;line-height:0;overflow:hidden;">.</span>
-    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFBD2E;margin-right:7px;font-size:0;line-height:0;overflow:hidden;">.</span>
-    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27C93F;font-size:0;line-height:0;overflow:hidden;">.</span>
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF5F56;margin-right:7px;font-size:0;line-height:0;overflow:hidden;"><span leaf=""><br></span></span>
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFBD2E;margin-right:7px;font-size:0;line-height:0;overflow:hidden;"><span leaf=""><br></span></span>
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27C93F;font-size:0;line-height:0;overflow:hidden;"><span leaf=""><br></span></span>
     <span style="margin-left:12px;font-size:12px;color:#64748B;font-family:Consolas,Monaco,monospace;letter-spacing:1px;"><span leaf="">python</span></span>
   </section>
   <section style="padding:11px 14px;">
@@ -109,68 +109,8 @@
 ```
 
 - 图标按素材类型换：🎬 视频/录屏、🖼 图片、📊 信息图、📎 附件。
-- 这是**唯一允许用虚线框（dashed）的场景**——因为它表达"占位/待补"语义，与正文强调用的小标签不冲突。
-- 各主题可把虚线色/底色微调成主题中性色，但保持居中、留白、柔和。
-
----
-
-## 三、小标签标题组件（突出标题/强调，**替代虚线框**）
-
-> **设计取向**：强调一段内容或起一个小标题时，优先用下面的"小标签 / 左竖条"形式，**不要用四周虚线框（dashed）包一个标题**——虚线框笨重、抢戏。小标签更轻、更现代。
->
-> **使用优先级**：先查摸鱼蓝主题库的映射规则；主题库有等价语义组件时优先使用，没有时才用本节组件。
->
-> 下列组件已直接使用摸鱼蓝的固定色值，无需二次换色。
-
-### 3a. 左竖条小标题（最推荐，干净）
-
-```html
-<p style="margin:28px 0 14px;font-size:16px;font-weight:800;color:#1C1917;line-height:1.5;border-left:4px solid #0076EA;padding-left:12px;">
-  <span leaf="">小标题文字</span>
-</p>
-```
-
-### 3b. 药丸标签小标题（实色底，最醒目）
-
-```html
-<p style="margin:28px 0 14px;">
-  <span style="display:inline-block;background:#0076EA;color:#FFFFFF;font-size:14px;font-weight:700;padding:5px 16px;border-radius:6px;"><span leaf="">小标题文字</span></span>
-</p>
-```
-
-### 3c. 序号药丸 + 标题（清单/步骤）
-
-```html
-<p style="margin:24px 0 12px;font-size:15px;font-weight:800;color:#1C1917;line-height:1.6;">
-  <span style="display:inline-block;background:#A5C5FC;color:#0076EA;border-radius:5px;padding:1px 9px;margin-right:8px;font-weight:900;"><span leaf="">01</span></span>
-  <span leaf="">要点标题</span>
-</p>
-```
-
-### 3d. 金句引用（左竖条版，取代旧的虚线框金句）
-
-```html
-<section style="margin:0 0 24px;background:#F3F7FF;border-radius:0 10px 10px 0;border-left:4px solid #0076EA;padding:16px 20px;">
-  <p style="font-size:16px;font-weight:800;color:#0076EA;margin:0;line-height:1.8;">
-    <span leaf="">「这里是核心观点或关键金句」</span>
-  </p>
-</section>
-```
-
-### 3e. 提示 / 旁注块（左竖条 + 类型小标签，取代旧的虚线提示框）
-
-```html
-<section style="margin:0 0 24px;background:#F3F7FF;border-radius:0 8px 8px 0;border-left:4px solid #0076EA;padding:14px 18px;">
-  <p style="margin:0 0 6px;">
-    <span style="display:inline-block;background:#0076EA;color:#FFFFFF;font-size:11px;font-weight:700;padding:2px 10px;border-radius:4px;letter-spacing:1px;"><span leaf="">提示</span></span>
-  </p>
-  <p style="font-size:14px;color:#374151;margin:0;line-height:1.8;">
-    <span leaf="">提示或旁注的正文内容</span>
-  </p>
-</section>
-```
-
-类型小标签文字可换：`提示` / `注意` / `重点` / `Prompt` / `旁注` 等。整块**没有任何 dashed 边框**，靠左竖条 + 浅底 + 小标签区分层次。
+- 素材占位使用这套虚线框；主题 9b 开篇/金句卡片另保留样例中的浅蓝细虚线。其他正文标题、引用和提示不使用四周虚线框。
+- 占位保持居中、留白与中性色，不充当正文强调。
 
 ---
 
@@ -182,6 +122,6 @@
 | 行内 `` `code` `` | 1c 行内代码 |
 | `![](图片)` | 2a 标准图片 |
 | `![](xxx.gif)` 或注明动图 | 2b GIF 动图 |
-| 想给一段起小标题 / 强调 | 3a 左竖条（首选）/ 3b 药丸 / 3c 序号 |
-| `> 金句` | 3d 金句左竖条块 |
-| 提示 / 注意 / 旁注 | 3e 提示左竖条块（**不要用虚线框**） |
+| 小节标题 / 并列要点 | 主题 9c 小节标题 / 11a 胶囊列表 |
+| `> 金句` | 主题 9b 开篇卡片 / 9a 正文引用 |
+| 提示 / 注意 / 旁注 | 主题 9a 引用框 |

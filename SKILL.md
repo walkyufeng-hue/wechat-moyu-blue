@@ -10,10 +10,12 @@ description: 微信公众号文章排版引擎，固定使用“摸鱼蓝”主�
 核心文件：
 
 - `references/theme-moyu-blue.md`：主题变量、组件、骨架、配方和 Markdown 映射。
-- `references/common-components.md`：代码块、图片/GIF、小标签标题。
+- `references/common-components.md`：代码块、图片/GIF 与素材占位。
 - `references/format-normalize.md`：非 Markdown 输入的归一化规则。
 
 所有 HTML 必须从组件库取用，不凭记忆另写样式。
+
+`docs/gallery/moyu-blue.html` 是内容组件与开头样式的验收样例。实际文章必须使用同款组件，不得仅保留蓝色和章节编号、把所有内容都退化为普通段落；具体选用遵循主题库的“样例一致性”规则。
 
 ## 工作流
 
@@ -36,7 +38,7 @@ description: 微信公众号文章排版引擎，固定使用“摸鱼蓝”主�
 | 元素 | 识别规则 |
 |---|---|
 | 文章标题 | `# 标题` 或 frontmatter `title`；仅用于公众号平台标题，不放进正文 |
-| 开头引言 | 文章最前面的 `> 引用` |
+| 开头引言 | 优先使用文章最前面的 `> 引用`；没有时使用原文首段，不另写摘要 |
 | 章节标题 | `## 标题` |
 | 子章节 | `### 标题` |
 | 行内强调 | `**文字**`、`==文字==`、`<u>文字</u>`、`++文字++`、`~~文字~~` |
@@ -50,6 +52,7 @@ description: 微信公众号文章排版引擎，固定使用“摸鱼蓝”主�
 
 按 `references/theme-moyu-blue.md` 的“完整文章模板骨架”装配：
 
+- 以同款 9b 开篇卡片起笔，再接前言和章节；卡片中的原文不在下方重复。
 - `##` 章节标题按顺序生成 `01 · CHAPTER ONE`、`02 · CHAPTER TWO`……；总结类末章使用 `∞ · POSTSCRIPT`。
 - `###` 使用主题小节标题。
 - `**加粗**` 使用主色加粗；`==高亮==` 使用亮蓝渐变高亮。
@@ -69,6 +72,7 @@ description: 微信公众号文章排版引擎，固定使用“摸鱼蓝”主�
 
 ```bash
 python3 <SKILL_ROOT>/scripts/component_lint.py <SKILL_ROOT>
+python3 -B <SKILL_ROOT>/scripts/test_component_lint.py
 ```
 
 ### 6. 输出
@@ -83,15 +87,16 @@ python3 <SKILL_ROOT>/scripts/component_lint.py <SKILL_ROOT>
 <SKILL_ROOT>/scripts/wrap_preview.py <正文文件>
 ```
 
-交付时提供正文文件、预览文件和校验结论。
+预览壳只提供复制工具，不得在正文前额外插入文章大标题、封面或导语；文章标题仅用于页面的 `<title>` 和公众号平台标题。核对正文与预览里的组件、开头顺序一致后，再交付正文文件、预览文件和校验结论。
 
 ## 必须遵守
 
 - 样式全部内联；禁用 `div`、`class/id`、`position:fixed/absolute/sticky`、`float`、`display:grid`、CSS 变量、外部 CSS/字体。
+- 正文与开篇卡片的蓝色主句统一 16px，包括普通段落、引用正文、列表说明和提示正文；章节标题、开篇卡片的灰色引导语、标签、代码、表格和图片说明保留各组件的独立字号。
 - 所有文字节点用 `<span leaf="">…</span>` 包裹。
 - 中文正文使用全角标点；代码、URL、英文专名和代码标识符保持原样。
 - 图片用 `max-width:100%;height:auto;display:block;margin:0 auto`，不强制 `width:100%` 拉伸小图。
 - 代码块每行一个 `p`，不用 `white-space:pre`；缩进使用全角空格。
-- 待补图片、GIF、视频或成果图使用通用组件 2c；只有素材占位允许四周虚线框。
+- 待补图片、GIF、视频或成果图使用通用组件 2c；四周虚线框仅用于同款 9b 开篇/金句卡片和 2c 素材占位，不扩散到普通标题或提示。
 - 锚点强调全文不超过 5 处，同一段高亮不超过 2 种。
 - 不生成任何作者、署名、互动或品牌收尾模块。
